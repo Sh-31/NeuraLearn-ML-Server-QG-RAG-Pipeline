@@ -1,2 +1,2 @@
 
-![image](https://github.com/Sh-31/NeuarLearn-QA-ChatBot-RAG-Pipline/assets/83607474/1db211f6-8ac1-4ad1-959c-7f43a8ac990c)
+![image](https://github.com/Sh-31/NeuraLearn-ML-Server-QG-RAG-Pipeline/assets/83607474/e528cce7-f259-4519-8be7-fa37fd650e4e)
