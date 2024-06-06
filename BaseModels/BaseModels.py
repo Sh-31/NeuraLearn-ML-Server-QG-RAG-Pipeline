@@ -2,8 +2,10 @@ from pydantic import BaseModel
 from typing import Optional , Union
 
 
-class TextIn(BaseModel):
+class SummarizerIn(BaseModel):
     text: str
+    max_length: Optional[int]
+    min_length: Optional[int]
 
 class AudioIn(BaseModel):
     audio: bytes 

@@ -2,8 +2,8 @@
 Issues :
 
     1. Fix SpacyTextSplitter() case 3 at text_splitter  [✅]
-    2. Use similarity search without vector database
-    3. find way to save vector database in dask 
+    2. Use similarity search without vector database    [✅]
+    3. find way to save vector database in dask         [✅]
 
 -----------------------------------------------------------------------------------------------------------
 ADD:

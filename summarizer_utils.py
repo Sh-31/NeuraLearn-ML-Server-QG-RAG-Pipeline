@@ -23,7 +23,10 @@ def query(payload):
 #                           )
 
 
-def summarizer_query(context):
+def summarizer_query(context, max_length=250, min_length=50):
     return query({
 	"inputs": context,
+    "max_length":max_length,
+    "min_length":min_length,
+    "return_full_text":True,
 })

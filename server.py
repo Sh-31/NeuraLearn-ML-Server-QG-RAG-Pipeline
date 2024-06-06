@@ -1,7 +1,8 @@
 import uvicorn
 import torch
+import os
 from fastapi import FastAPI , Request , Depends
-from BaseModels.BaseModels import TextIn  ,AudioIn, HumanIn
+from BaseModels.BaseModels import SummarizerIn  ,AudioIn, HumanIn
 from summarizer_utils import summarizer_query
 from model_utils import Chatbot , GemmaLLM_Api_EndPoint
 from document_prompts_utils import embedding_model
@@ -37,13 +38,13 @@ def question_answer(HumanIn:HumanIn):
 
 
 @app.post("/neuarlearn/ml/summaizer")
-def summarizer(text:TextIn):
-    return summarizer_query(context=text.text)
+def summarizer(SummarizerIn:SummarizerIn):
+    return summarizer_query(context=SummarizerIn.text, max_length=SummarizerIn.max_length, min_length=SummarizerIn.min_length)
 
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8080)
+    uvicorn.run(app, port=8080, host="127.0.0.1")
 
 
 

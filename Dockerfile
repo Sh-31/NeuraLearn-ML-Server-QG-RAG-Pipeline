@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:latest
+FROM  pytorch/torchserve:latest-cpu
 
 # Seting the working directory
 WORKDIR /NeuarLearn-QA-ChatBot-RAG-Pipline
@@ -12,6 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the project files into the container
 COPY . /NeuarLearn-QA-ChatBot-RAG-Pipline/
 
+EXPOSE 8080
+
 # Define the command to run your project
 CMD python server.py
-
