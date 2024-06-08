@@ -7,8 +7,8 @@ with open(context_path, 'r') as file:
             
 
 payload = {
-    "context": context,
-    "question": "what is for loop?",
+    "context": "there are no context",
+    "question": "Who are you?",
     "k": 3,
     "type": 3,
     "chat_history": [],
@@ -19,13 +19,17 @@ payload = {
 
 }
 
+# # TEST Question Generation                                                                    
+# response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/QuestionGeneration", json={"transcript":context, "types":[0, 1 , 2],"scope":None})
+# print(response.json())
+
 # TEST CHATBOT 
 # response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/chat", json=payload)
 # print(response.json())
 
 # TEST Summaizer
-response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/summaizer", json={"text":context, "min_length": 50, "max_length": 250})
-print(response.json())
+# response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/summaizer", json={"text":context, "min_length": 50, "max_length": 250})
+# print(response.json())
 
 
 # TEST Transcript

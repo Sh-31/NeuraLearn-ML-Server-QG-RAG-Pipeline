@@ -10,6 +10,11 @@ class SummarizerIn(BaseModel):
 class AudioIn(BaseModel):
     audio: bytes 
 
+class QuestionGenIN(BaseModel):
+    transcript: str    
+    types: list[int]
+    scope: Optional[int] = None 
+
 class HumanIn(BaseModel):
     question: str
     context: Optional[str]

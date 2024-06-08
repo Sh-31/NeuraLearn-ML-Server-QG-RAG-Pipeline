@@ -2,16 +2,19 @@ import uvicorn
 import torch
 import os
 from fastapi import FastAPI , Request , Depends
-from BaseModels.BaseModels import SummarizerIn  ,AudioIn, HumanIn
+from BaseModels.BaseModels import SummarizerIn  ,AudioIn, HumanIn, QuestionGenIN
 from summarizer_utils import summarizer_query
 from model_utils import Chatbot , GemmaLLM_Api_EndPoint
 from document_prompts_utils import embedding_model
+from question_generation_utils import load_generation_generation_model , load_sentencizer , question_generation_query
 from transcript_utils import query
 
 app = FastAPI()
 llm = GemmaLLM_Api_EndPoint()
 runtime = "cuda" if torch.cuda.is_available() else "cpu"
 embed_model = embedding_model(runtime=runtime) 
+model , tokenizer = load_generation_generation_model()
+sentencizer = load_sentencizer()
 
 
 async def parse_body(request: Request):
@@ -41,6 +44,10 @@ def question_answer(HumanIn:HumanIn):
 def summarizer(SummarizerIn:SummarizerIn):
     return summarizer_query(context=SummarizerIn.text, max_length=SummarizerIn.max_length, min_length=SummarizerIn.min_length)
 
+@app.post("/neuarlearn/ml/QuestionGeneration")
+def question_generation(QuestionGenIN:QuestionGenIN):
+
+    return question_generation_query(model=model, llm=llm, tokenizer=tokenizer, nlp=sentencizer, transcript=QuestionGenIN.transcript, types=QuestionGenIN.types) 
 
 
 if __name__ == "__main__":
