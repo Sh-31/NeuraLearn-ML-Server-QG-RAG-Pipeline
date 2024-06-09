@@ -1,4 +1,4 @@
-FROM  langchain/langchain
+FROM  pytorch/torchserve:latest-gpu
 
 # Seting the working directory
 WORKDIR /NeuarLearn-QA-ChatBot-RAG-Pipline
