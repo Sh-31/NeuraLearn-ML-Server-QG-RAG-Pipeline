@@ -1,14 +1,14 @@
 import requests
 
 
-context_path = 'context.txt'
+context_path = 'cat.txt'
 with open(context_path, 'r') as file:
     context = file.read()
             
 
 payload = {
-    "context": "there are no context",
-    "question": "Who are you?",
+    "context": context,
+    "question": "What is differeance bettween html and css?",
     "k": 3,
     "type": 3,
     "chat_history": [],
@@ -19,8 +19,8 @@ payload = {
 
 }
 
-# # TEST Question Generation                                                                    
-# response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/QuestionGeneration", json={"transcript":context, "types":[0, 1 , 2],"scope":None})
+# TEST Question Generation                                                                    
+# response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/QuestionGeneration", json={"transcript":context,"types":[2],"chunk_size":3000,'chunk_overlap':500})
 # print(response.json())
 
 # TEST CHATBOT 

@@ -1,0 +1,530 @@
+ The next step is to figure out what the width is of the website that was created in Photoshop.
+ So we can do this somewhat easily.
+ I'm going to select the ruler tool by going right here and choosing ruler or I can press
+ this keyboard shortcut.
+ Next I'm going to specify the edges right here and if I hold down shift I can limit it
+ to a straight line like so.
+ Now I'm going to go to the end and it appears in this case that the width is 935 pixels.
+ However we're still going to use the 960 framework because there may be some margins
+ involved.
+ So let's do that now.
+ We're going to go back to 960.js and download these assets once again.
+ If you're not familiar with 960 be sure to go back and watch the episode on it.
+ And I'm going to open up these two directories and I'll turn each one side by side.
+ And now we're going to go into the code CSS and we're going to copy over the necessary
+ files.
+ In this case we're going to copy over the text which is their base text file, a reset
+ and then the 960 framework itself.
+ Now if we want to do both 12 columns and 16 columns we can choose this.
+ However if we want to limit it so our file size is smaller we can use this one right
+ here.
+ Now I will drag those in and we're all set.
+ Now I'm going to reference them.
+ First one that we're linking to is our reset.
+ Next we're going to reference the text.css and finally we're going to link to 96012call.css
+ referenced right here.
+ Alright if you'd like to self-close these you can.
+ It doesn't really matter.
+ I'm going to save this and now let's reload this in the browser and see what we have.
+ Okay well because we have applied some base grid class names like container 12 and grid
+ 10 we already have a little bit of formatting and it's starting to look like an actual website
+ but we need to do a little more.
+ The first step is let's work from top to bottom.
+ We're going to get the header and the navigation area.
+ So let's take a look at our PSD again for reference and the navigation is all on one
+ line.
+ So let's do that now.
+ Right here I'm going to create a divider and I've created a snippet.
+ I encourage you to do the same and we'll call this header and we're going to take all
+ of this information right here and place it in here and that way I can easily browse through
+ my style sheet.
+ A little trick is to also use an equal sign at the beginning and then you can search for
+ equal header and it automatically goes there because otherwise if you just searched for
+ header it's going to bring up every reference to header.
+ So that's a nice little trick to know.
+ Next I'm going to create a divider for our navigation and let's first start by making
+ the list items inline.
+ So we'll say nav li display inline save it and let's come back and now we can see those
+ are being displayed inline but they're right underneath black and white.
+ So why don't we float the logo to the left and float the navigation to the right.
+ We'll try that float left and navigation will float to the right.
+ Let's try it out again.
+ There we go.
+ That's looking better.
+ However because we did float we've learned about this because we floated these two elements
+ they've collapsed and that's what's making it look like everything has pushed up.
+ So let's come back to our header and let's use the overflow hidden trick to make sure
+ it contains its floats and that'll push this information down.
+ The next step is I want to go ahead and add that black box in that we can see right here.
+ So it's just black so we can specify a big width and a large height and it's okay because
+ we can adjust this later.
+ With nindex.html we called it grid 2.
+ I need a better name and we'll probably say perhaps call out and you can change this later
+ depending upon what you add there.
+ Because I'm going to go to the banner and I'm going to put that within a divider as
+ well because that's something I'll probably come back to often.
+ There we are.
+ Next we'll say call out and that's going to have a background of black and we'll give
+ it a height of 200 pixels for the time being.
+ And now notice it should be the exact height of the background image here.
+ So I can see that I set it to 231 so I'm going to duplicate that as well.
+ Now we have the height and it looks like the width probably does need to be bigger but
+ we're going to come back to that.
+ I want to get the basic structure in place so let's do the main section as well.
+ Let's come back to Photoshop and it's split into three columns.
+ And what we decided was grid 5, grid 5, grid 2.
+ Let's come back and ensure that that is in place.
+ Grid 5, grid 5, grid 2.
+ But remember that it's not showing up correctly and the reason why these aren't taking effect
+ is because we've used the word 2 but actually we should be using the number.
+ That makes it a little bit shorter.
+ There we are.
+ Now let's come back, reload and there we are.
+ So we've already have a basic layout.
+ Now all we need to do is add some finesse, add some padding and make it look a lot better.
+ So the first thing I want to do is get this area a little bit better because grid 2 probably
+ is too small.
+ So let's come back and why don't we adjust it right here and right here at the bottom.
+ But that's going to make it too wide now because we have 5, 5, and 3.
+ It's 13 and it's going to fall on its own line.
+ So that means this may not be perfect.
+ We have grid 4 and grid 4 but there's no way we can get these numbers to be identical without
+ being too low or too high.
+ So 4 plus 4 is 8 plus 3 is 11 and that's working down here but then this is taking up more space.
+ Next I find it's easier for me if I use background colors so I can really easily see the dividers
+ and my boxes.
+ So we'll do that right now temporarily at the very bottom and we're going to say get the
+ grid 4s and those will have a background of red and we're going to get our container.
+ So that's container 12 will be green and then finally grid 3 will be a background of orange.
+ Now let's see and if we reload we can kind of easily see exactly what we're working with.
+ So as I am doing this in real time and I don't have notes you get to see how I would do this.
+ The first thing I think is there should be some spacing below the banner.
+ So let's do that now.
+ I'm going to come back and below the banner you can see this main section begins.
+ So let's create a new divider for the main section and now I'm going to say main, margin
+ top give it some 20 pixels worth of breathing room.
+ There we are that pushes that down.
+ Next I see that the footer has pushed up because this isn't lined up either and now I'm going
+ to say get a new divider for the footer and I'm going to make sure that is clear both
+ as well.
+ There we go and that's pushed down much better.
+ My next note is I would like some spacing below the logo as well and we have margin
+ right here of top and bottom of 10 pixels and left and right of 10 pixels and I must
+ admit I don't remember writing that so I might have done that as a mistake because we could
+ just reduce that to 10 pixels even.
+ So why don't we keep 10 pixels and then 10 pixels and then on the bottom will be 20
+ pixels and the left will leave blank because it's implied that it's 10.
+ We reload and now that's been pushed down.
+ Let's refer back to our Photoshop file.
+ I see right here that we sliced out our logo but he does have a plus in it so why don't
+ we try that again, select it and now you see it was divided into two layers so why don't
+ we group those together and if we want we can merge them.
+ I can press command E to merge or control E and then do it like we did before.
+ Select create a new file, save it, turn off the background, save it as a ping 24 and we'll
+ overwrite the value of logo.
+ There we are.
+ Reload and now we have the plus back.
+ Okay that was easy.
+ The next step is we know that there was a little too much spacing here and the reason
+ is this design doesn't fit perfectly into a 12 column grid as we've seen here because
+ these are both set to one third which was what would make sense.
+ It doesn't line up perfectly so maybe we need a different number of columns.
+ Now if we come back to the 960 framework, if you'll remember there are multiple grids
+ that we can use and if I open this up again I'll go to code CSS and you see that we have
+ 12 columns, 24 columns and even 16 columns.
+ So that means we need to figure out how this would fit in.
+ If we did 16 columns that doesn't divide evenly so that's why it's not quite as common.
+ So if we were to divide it into thirds that would be more like five and a third.
+ So with that in mind why don't we switch to a 24 column grid because that's going to
+ give us a lot more flexibility and to do that it's really easy.
+ I'm going to open up my website and all I do differently is drag in my 24 column grid like so.
+ Next we delete the old version and then we come back and we rewrite to 96024 and now
+ let's look at the new classes that we have and it's fairly similar.
+ One difference is because we're using a 24 column grid it's still the exact same width
+ but it's a different number.
+ I need to update this as well.
+ So let's just save that and see how our website is looking now and notice that all of them
+ are much smaller.
+ So we need to update these accordingly.
+ Let's come back to Photoshop and let's measure.
+ I'm going to press I to select the measuring tool.
+ If yours does not come up you can press shift I a few times till it does.
+ And I'm going to zoom in and select the width of what we have right here.
+ And let's see what I get.
+ Okay so his is about 340.
+ Let's see what we have that's really close to that within here.
+ And I can scroll down and look at each one and this looks about right grid 9 or so.
+ So let's see how we can add up to 24.
+ We have 3 so if we had 9 plus 9 is 18.
+ Let's add that in right now and we'll do the bottom section grid 9 and 9 reload and that's
+ pushing those out.
+ So 24 minus 18 equals 6.
+ And let's see how that lines up.
+ Grid 6.
+ There we go and I think that's looking a lot cleaner.
+ So yes when you're doing it from scratch sometimes you have to change things up.
+ If you decide an hour into your project that you need a different grid then do it because
+ it only takes a moment or two to implement.
+ Next I'm going to do the exact same thing for the banner right here.
+ Come to the top.
+ 18 plus 6 equals 24.
+ There we go and now we're getting a real good looking website.
+ Alright so I'm going to continue on and I'm going to check the spacing here again.
+ And if we want to verify something you can come back to your PSD, press Z to zoom in
+ a few clicks.
+ Now I will press I or select the ruler and I'm just going to measure holding down shift
+ to what the distance is.
+ And that way I can see what the margin is.
+ And it's around 22 pixels so we did that about right when we applied it.
+ If we want to adjust this so I can set it to about 22 pixels.
+ Reload.
+ Yeah there we go.
+ But now here's one problem.
+ Is at the top the navigation section is a little too high.
+ So why don't we reduce that down.
+ And for now I'm going to set padding top to 20 pixels.
+ What we want to do here and we're just going to use our eye is we want to line this up
+ perfectly with black and white.
+ If you need to see how it lines up in the PSD always refer back to your PSD because you
+ want to be as close as possible.
+ And in this case can you see I am right underneath black and white and the navigation section
+ is just a touch above that.
+ Let's try it in here.
+ By the way on the Mac I'm pressing shift command 4 which is traditionally used to take snapshots
+ but it can also be used to specify widths and use as a ruler of sorts.
+ So I need to push up my navigation to 12.
+ There we go.
+ Next let's work on our navigation section.
+ Let's see how it looks in the PSD and it's very simple.
+ He has gray text and the selected one or the highlighted one presumably if you hover over
+ it is a blacker color.
+ So if we want to figure out what the color of this is I can choose the text tool and
+ I will select it and then if I come up here it'll automatically be set to the color of
+ that text.
+ In this case it's 70, 70, 70.
+ So let's add that in right now and we'll assume that all anchor tags are set to this color.
+ So I'll create a new divider called miscellaneous and set the A color to that and then a hover
+ he had set it to black.
+ Reload there we are.
+ When I hover over one notice it's now black but in his design the current page is black.
+ The selected page is what we call it.
+ So you can do that trick by coming back and applying a class and then the current page
+ will always have a class of selected.
+ We'll do it right now.
+ Class equals selected and then we can also apply the hover styling to any class of selected.
+ Reload and now that's received it but when we hover over something it does as well.
+ Let's come back though and notice that there is no underline so let's remove that.
+ Text decoration none.
+ Of course I should apply that to the generic anchors not the hover state.
+ Reload there we go.
+ Next remember how I noted that he used lowercase and I thought that was a stylistic decision.
+ We can make it lowercase with our CSS by doing not on our general because it's likely you
+ only want that styling applied to the anchor tags within the navigation presumably.
+ So why don't I do nav A to limited to only anchor tags within the navigation and then
+ I will specify text transform lowercase and now that's been adjusted and we did it all
+ within our CSS hover over each one and that's looking fine.
+ Let's check out the padding and it looks like the spacing I have is a bit more than he has.
+ So we can see what the default is inspect element click on each list item and you can
+ see the default margin left of 30.
+ If we want to reduce this I'm going to press the down arrow and get it more towards what
+ he has which is 22 or if you want to be more specific always bring out that ruler tool
+ zoom in and measure yourself.
+ He's got 24 so we'll keep it at 24 pixels and we will update our style sheet.
+ So we'll go back and that's miscellaneous styling so list item all list items will have margin
+ left of 24 pixels.
+ If I reload okay this is looking a lot better.
+ Let's see about styling the buttons.
+ If we go back to the PSD his are very simple but there is some nice styling there.
+ I'm going to press Z to zoom in a few clicks.
+ First thing I can see is it's a blackish background so I will select right here and that will
+ bring up an eyedropper tool and then I can bring it over the text click and that will
+ change to the current color.
+ So I will select that copy it and now I can use that as the background but how do we target
+ that anchor tag.
+ We certainly don't want to apply it to all anchor tags and if we come back we remember
+ that we applied a class of button.
+ So let's do that as well.
+ All button elements will have a background of this color.
+ Now if I reload there it is but there's not enough spacing so we should use padding for
+ that.
+ Let's see about how much he used.
+ I'm going to get my helpful ruler selected to the end and it looks like about six pixels
+ worth six pixels.
+ One more time reload.
+ Okay that looks pretty good.
+ Now obviously the default when you hover over an anchor is black that doesn't look good.
+ Why don't we make it white in this case.
+ Button hover color white.
+ There we go that looks good.
+ Now it looks like he has also set the text a little bit smaller but we can verify that
+ and we should do that in general.
+ What is the default font size?
+ I'll select the text tool select some text and then I'll come up right here and now we
+ can see the information.
+ He's got a font of aerial and the font size he selected is 13 pixels with a line height
+ of 20.
+ Let's add that in right now.
+ We can override the text.css file that was supplied.
+ We can add it to text.css if we want or if you prefer you can work within your layout
+ and leave that blank.
+ In this case because we're within style.css most of our time I don't want to confuse you
+ too much.
+ So we'll do it right here within our general or you could also have this in a typography
+ section.
+ Font size 13 pixels line height is going to be 20 pixels.
+ Notice that we're just going to the Photoshop file getting the values and transferring them
+ over.
+ That's all we're doing here.
+ Reload and now it looks a little bit different but the line height has been increased.
+ Next what about the default color?
+ That's not hard black and it has a color of 35 35.
+ So let's specify that as well.
+ All paragraph has a color.
+ Now if you want that to be the default color across the board you could apply that to the
+ body element but here we're going to limit it to just paragraphs.
+ Reload and now that's been reduced.
+ But what about headings?
+ Is he keeping the same color as well?
+ And once again I'm going to select this text, choose the color and it does appear that he's
+ using black as well.
+ If we also look here we can see that he has a really high line height setup but we don't
+ want to do that within HTML because if your heading does break onto a new line that means
+ every single sentence is going to have that huge spacing.
+ So what we should do is add some padding below it instead.
+ And it looks like he's also set the letter spacing reduced as well.
+ So we will come back.
+ Let's specify that h1 tags have letter spacing of negative one pixel and we're going to set
+ the same thing to h2s.
+ And while we're at it if we come back notice that I did use h1 tags here.
+ I think that's probably not the best choice.
+ I'm going to reduce this to h2 and I think that'll be a little bit cleaner.
+ And that's reduced so we need to figure out what the exact size is and also make the text
+ smaller.
+ In this case the font size is 26.
+ So I'm going to add that in.
+ h2 font size is 26 pixels.
+ Also we're going to do text transform lowercase.
+ There we go.
+ That's looking very good.
+ The next thing that I see as I'm working through this we're eventually going to get
+ to our banner but at the very top that header is really close to the top so I think I would
+ prefer to have a little breathing room.
+ So we can do that right at the top container 24 and we'll give it a margin top.
+ Let's start with 10 and we're mostly using our eye but I think that's cleaner.
+ Just a little more breathing room.
+ Good.
+ And next let's add the spacing below the headers because notice remember he had a lot of room
+ and then an underline.
+ And what color is this underline?
+ I'm going to zoom in really close.
+ Select the eyedropper tool by pressing I or shift I a couple times.
+ And if I click it now this color has been selected and that's what I know my divider
+ should be set to.
+ So let's try this out because it might take a little bit of tinkering.
+ We'll assume that all H2 tags will receive this styling.
+ If you want to limit it to only within the main section you could do that as well.
+ Border, bottom, one pixel solid this color.
+ And what you'll see when we do this is it's right underneath but we need to stretch that
+ out so if we were to set padding bottom to 30 pixels you see that gets pushed down quite
+ a bit.
+ And that's why you need to come to your file and measure exactly what it needs to be.
+ If I select right there it is around 27 and then after it there's some more spacing of
+ around 15.
+ So let's adjust this 27 and the margin will be affected underneath the border like so.
+ And now if we come back we can see that that lines up.
+ I might have measured a little too high so I will reduce that back down to maybe 24 or
+ maybe 20.
+ You can play around with it.
+ I think that looks good though.
+ Alright and next I want to work on this block quote.
+ In the design he has pretty quotes around it and the text is much larger and it's italic
+ of course.
+ I'll select the text and see if he has it set to 15 with a line height of 20.
+ Come back to miscellaneous block quote and the font size is 15.
+ The line height is 20 pixels and we want to make sure that it is italic text.
+ I'll save that and reload and it appears that this is not taking effect.
+ So let's see why.
+ Inspect element and we see we do have that on but the reason it's not taking effect is
+ because the paragraph is overriding the styling of the block quote.
+ So if we want to target that directly we say block quote and then maybe comma block quote
+ P. And the reason I'm doing this is because that way we get the large font size even if
+ whoever adds more HTML forgets to use a paragraph tag within.
+ So it's future proof.
+ Now I'll come back, reload and there it's taking effect.
+ Next I would like to add these pretty quotes that you can see right here.
+ So first step is select the color BFBF and then we're going to use CSS pseudo classes
+ because these are stylistic.
+ So we'll say block quote and maybe only the block quote within the main section because
+ if you added a blog later they don't want those quotes with every block quote.
+ And with that in mind I will take all of this out and bring it into the main section like so.
+ Now I will make a declaration for before content will be for now a simple double quote.
+ Let's try that out, refresh and to see that it's working I'll change it to just lots of letters.
+ And now I'm seeing that it's not coming up so that means there is a problem and we get
+ to debug together.
+ I'm going to remove main and let's see if it's working that way.
+ And it is so that means there's some problem.
+ Shouldn't this block quote be a child of main?
+ Well it should.
+ Maybe we made a mistake and this is why you validate.
+ So we can validate or first see if we can figure it out on our own.
+ Here's our main section so then we have a grid nine.
+ Then we have another grid nine but then we have this closing diff so it looks like we
+ accidentally closed the main section too early.
+ So we will indent this and now we have just done a little bit of debugging and hopefully
+ we fixed it.
+ And if I reload now it's showing up.
+ Good.
+ So let's change this to a double quote and can you see that it's showing up right there?
+ Let's style it though and make it really big like so.
+ So I'm going to select this text and see what he has.
+ He has it 40 pixels tall font size 40 pixels color that shade of gray.
+ Let's try it again.
+ Good.
+ I want to make the font style italic as well.
+ And now we can see it's not quite the same as his and we can look for pretty quotes.
+ So I'm going to search for pretty quotes HTML.
+ So we'll check this out and here we have some options here and what we need are those pretty
+ quotes.
+ So I will copy that and come back and paste that in here instead.
+ Now we have a curly quote is what you would call it.
+ And now that's looking a lot better.
+ We need to do the same thing after it as well.
+ So main block quote after and we're going to switch to the closing curly quote.
+ Next because I don't want to duplicate I'm going to adjust this to main block quote
+ before and then do the same thing after that way I can group all of this styling into one
+ and I don't have to repeat myself because that can be a big pain if I need to make adjustments
+ and it's also not a good practice.
+ There we go.
+ So let's try this again reload looking better.
+ But we know that this should be put on the right as you can see right here.
+ So let's adjust the float right reload.
+ There we go.
+ Let's come back and see what else we can do.
+ The color should be different.
+ It's not that grayish color.
+ It looks like he's using almost black.
+ Notice the subtlety in different colors here.
+ So I'll set the color of all text within block quotes at the top right here to that value
+ reload that's looking better.
+ And if I zoom out I'll get a better angle and I'm going to go back and forth.
+ It looks like the beginning quote is right before the text it's not on its own line and
+ the same thing for the closing quote but that's not what we have.
+ Now the reason this is happening is because we're applying this content before the block
+ quote but not before the paragraph so that's where you're getting that spacing.
+ So one way we can fix this is to apply this before the first paragraph.
+ If I just do this what it's going to do is apply this content before every single paragraph
+ and if you have multiple paragraphs within a block quote that's going to look really
+ odd.
+ So instead I'm going to limit this to the first paragraph and that way this styling only
+ gets applied.
+ However, in this case this is the closing so I'm going to change that to last and this
+ one to first child.
+ Get the first paragraph within the block quote and add it and that way it should look a lot
+ better.
+ Now we're not getting the styling anymore because we have to adjust it here as well
+ like so.
+ Reload and now that's looking better but still we need some more spacing so you'll notice
+ little simple things like this.
+ You could use a background if you want but sometimes you need to spend a little bit of
+ time with them.
+ In this case I'm going to add some padding left to the text itself.
+ Once again we're going to limit this only to the block quotes within that main section
+ and if we do padding left and let's do a big number so you can see exactly what's happening.
+ It's pushing the text over but it's also going to put the quote over.
+ But watch what happens if we get the quote right here and we set the position to absolute
+ and we push it in the top left portion of that area.
+ What you're seeing is it's disappeared but it hasn't disappeared.
+ It's gone all the way to the top right here and you've learned about this in our positioning
+ tutorial.
+ That's happening because we have not specified a positioning context so it's using the body
+ or the window as its context.
+ We can limit this though by always specifying in your block quotes a position of relative.
+ And now can you see because we specified that it is now limited to that section and we are
+ able to add that padding.
+ Good, now we're starting to get it.
+ Let's scroll back down and I think that padding left is too much.
+ Let's reduce it to 30.
+ There we go.
+ And I also want to push it down just a touch.
+ So right here rather than top let's do top five pixels and you might want to play around
+ with it just a touch.
+ Maybe seven.
+ Okay so we have the left section right.
+ The right section should be on the last line.
+ Position absolute, bottom zero and right zero.
+ Now I would presume it's not going to change as you can see right here and that's because
+ it's already in the bottom right spot.
+ So we just need to push it even lower so I can use a negative number, negative five
+ pixels and that looks a lot better.
+ Maybe seven once again.
+ So what we should do is test this and test it by adding another quote right here and
+ if we did everything right it should still display nicely.
+ Reload and there you go.
+ You have the beginning quote at the top and the closing quote at the bottom.
+ So it did take some trickery.
+ You could use backgrounds if you want but I like to use CSS whenever possible.
+ Let's get rid of that and now we're done with that section.
+ Okay and we're about ready to get onto this banner.
+ The last thing is I want to make sure everything lines up nicely.
+ And next we're about to get to styling this banner right up here but one thing is that
+ you always want to make sure your lines are nice and clean.
+ So we should make sure that the top of these headings, the beginning of the main section
+ is consistent all the way through but it's not.
+ Notice how the block quote is just a little taller and even though that doesn't seem like
+ a big deal it actually is.
+ So we can adjust this and what's causing this is either margin or line height.
+ If I hover over it can you see that the bounding box, there's actually a good bit of spacing
+ above the heading.
+ Now we can see that there is no margin applied.
+ You can go to compute it to double check.
+ No margin applied at all.
+ So that means it's line height and the line height can add a little bit of spacing.
+ If I were to set that to 1M which is the default for A heading 2, can you see how it pushed
+ up and now if we want to double check that we did it right here that should line up with
+ the top and can you see it does?
+ So let's fix this and we're going to go up to H2 tags and make sure that we specify
+ that the line height should be 1M and now we've made a subtle change but that really
+ adds up I promise you and everything is lining up nicely.
+ We'll do this side as well that lines up.
+ Okay good so now you have a good working website.
+ We just need to do a little bit more for this lesson.
+ You've stuck around for a really long time so congratulations.
+ Let's get this banner text done.
+ So we're going to do a little bit of the footer and then we're done for today and you can put up your feet.
+ So let's go back to the Photoshop file, zoom out and can you see that right now the text
+ is white with the background.
+ So if you ever feel overwhelmed and you think I don't know the beginning of how to do this
+ one step at a time, first we specify the color.
+ So it's telling me right here I don't have that font installed that's okay but the color
+ is set to white and the font size is 28 and he has the letter spacing reduced ever so
+ slightly.
+ So we can do that right now.
+ Let's go back to index.html and within our banner section at the very top this is a heading.
+ So why don't we make that an H2.
+ You could also experiment with making these H3 tags.
+ You just want to create the proper hierarchy and you may need to go back and adjust it later.
+ For now I'll keep them all at H2's but then remember it is going to receive any styling
+ that we've already applied as you can see right there.
+ And now I'm thinking why don't we come back and we're going to adjust all H2's so I'm
+ going to select H2 and on the Mac I can do a quick search and replace by pressing control
+ command G and we're going to change all of those occurrences to H3 and then right up
+ here I will make just this section an H2 and that way I'm not receiving that styling and
+ then I can come back here and adjust things.
+ So now we're only targeting H3's with that text and now these will stay the same but
+ this is reduced to whatever is set by default.
+ We'll scroll down a little bit more and see if there's anything else we need to change
+ and while I'm thinking of it let's go ahead and get rid of those background colors that
+ we set right here because we don't need those anymore.
+ We know what we're doing.
+ Okay so now let's specify the colors.
+ So within here banner H2 the color is going to be white.
+ The font size is set to 28 pixels.
+ That looks a lot better and now we know we don't want the width to be too high.
+ As you can see here he doesn't even have the font set to bold and he is using a special
+ font so if you needed to you could also use a custom font or you could use a background
+ image.
+ It's just up to you.
+ I like to use as much HTML as when possible but generally you may want to use a custom
+ font and you can look at font squirrel or Google fonts for that.
+ So for now we're going to specify a maximum width for this section and we can see it's
+ roughly around 400 pixels.
