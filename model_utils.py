@@ -13,7 +13,7 @@ def get_completion(prompt:str, llm):
     return llm.invoke(prompt)
 
 
-def GemmaLLM_Api_EndPoint():
+def Llm_EndPoint():
     llm = HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.3",
                           max_new_tokens=1000,
                           huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_API_TOKN"),

@@ -1,10 +1,10 @@
 import os
 import torch
 from dotenv import load_dotenv 
-from model_utils import Chatbot , GemmaLLM_Api_EndPoint
+from model_utils import Chatbot , Llm_EndPoint
 from document_prompts_utils import embedding_model
 from model_utils import get_completion
-from question_generation_utils import load_sentencizer , load_generation_generation_model , question_generation_query
+from question_generation_utils import load_generation_generation_model , question_generation_query
 load_dotenv() # Load Secret Keys out side the repo
 
 context = '''  From now onwards we will start with the unit 6 that is conditionals and loops.
@@ -162,15 +162,10 @@ if __name__ == "__main__":
 
     
     # print(summarizer(context))
-    llm = GemmaLLM_Api_EndPoint()
+    llm = Llm_EndPoint()
     
-   
-
-
     model , tokenizer = load_generation_generation_model()
-    sentencizer = load_sentencizer()
+  
     
-
-
-    outputs = question_generation_query(model, tokenizer, sentencizer, context, [0,1,2]) 
+    outputs = question_generation_query(model, tokenizer, context, [0,1,2], 2000, 1000) 
     print(outputs)

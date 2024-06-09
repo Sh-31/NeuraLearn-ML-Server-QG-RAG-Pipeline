@@ -1,7 +1,7 @@
 from peft import AutoPeftModelForCausalLM
-from spacy.lang.en import English
 from transformers import AutoTokenizer
 from parsers_utils import parse_text
+from document_prompts_utils import text_splitter
 import numpy as np
 import torch
 
@@ -32,11 +32,14 @@ def clean_transcript(transcript:str,llm):
     Refined Text:
     "There are various algorithms such as neural networks and decision trees."
     '''
-    context = llm.invoke(instruction+transcript)
+    context = llm.invoke(instruction+transcript,temperature=1, max_new_tokens=2000)
     return context
 
 
 def adjust_prob_distribution(types_to_include:list):
+    '''
+    This probability distribution of question is matching the our collected data
+    '''
     prob_distribution = [0.6 , 0.2 , 0.2]  # probabilities: [MCQ, True/False, Open]
 
     if len(types_to_include) == 1:
@@ -46,9 +49,10 @@ def adjust_prob_distribution(types_to_include:list):
     elif len(types_to_include)  == 2:
         # Adjust the probability distribution proportionally
         prob_distribution = [0 , 0 , 0]
+        types_to_include = sorted(types_to_include)
         prob_distribution[types_to_include[0]] = 0.6
         prob_distribution[types_to_include[1]] = 0.4
-        
+    
     return prob_distribution
 
 
@@ -64,61 +68,34 @@ def load_generation_generation_model():
     return model , tokenizer
 
 
-def split_transcrpit(transcrpit:str,prob_distribution:list,nlp,chunk_Scoop:int=15):
+def split_transcrpit(transcrpit:str,prob_distribution:list,chunk_size:int=2000, chunk_overlap:int=1000):
     '''
     My question generation model generate one question at time and we need more question in same context so by spilting 
     the main points using scpey sentencizer tokenizer we can chunk them in groups this way can question more then question 
     '''
-    doc = nlp(transcrpit)
-    sents_list = []
-
-    t = np.random.choice([0,1,2], p=prob_distribution)
-    
-    chunk = ""
-    instruction = ""
-
-    if t == 0:
-        instruction = "You will assist me in generating MCQ questions along with their Answers and Choices. Please use the next context to guide you generating of MCQ questions### Context: : "
-
-    elif t == 1:
-        instruction =  "You will assist me in generating True or False questions along with their Answers. Please use the next context to guide you generating of True or False questions### Context: : "     
-
-    else :
-        instruction = "You will assist me in generating Open questions along with their Answers. Please use the next context to guide you generating of Open questions### Context: : "
-
-    chunk += instruction
-
-
-    i = 0
+    new_chunks = []
+    chunks = text_splitter(transcrpit,type=3,chunk_size=chunk_size, chunk_overlap=chunk_overlap)
  
-    for sent in doc.sents:
-        chunk += sent.text
-        i += 1
-        if i == chunk_Scoop:
-            sents_list.append(chunk)
-            t = np.random.choice([0,1,2], p=prob_distribution)
+    for chunk in chunks:
 
-            instruction = ""
+        t = np.random.choice([0,1,2], p=prob_distribution)
 
-            if t == 0:
-                instruction = "You will assist me in generating MCQ questions along with their Answers and Choices. Please use the next context to guide you generating of MCQ questions### Context: : "
+        instruction = ""
 
-            elif t == 1:
-               instruction =  "You will assist me in generating True or False questions along with their Answers. Please use the next context to guide you generating of True or False questions### Context: : "     
+        if t == 0:
+            instruction = "You will assist me in generating MCQ questions along with their Answers and Choices. Please use the next context to guide you generating of MCQ questions### Context: : "
 
-            else :
-                instruction = "You will assist me in generating Open questions along with their Answers. Please use the next context to guide you generating of Open questions### Context: : "
+        elif t == 1:
+            instruction = "You will assist me in generating True or False questions along with their Answers. Please use the next context to guide you generating of True or False questions### Context: : "     
 
-            chunk += instruction
-            i = 0
-  
-    return sents_list
+        else :
+            instruction = "You will assist me in generating Open questions along with their Answers. Please use the next context to guide you generating of Open questions### Context: : "
 
+        chunk += instruction
+        
+        new_chunks.append(chunk)
 
-def load_sentencizer():
-    nlp = English()
-    nlp.add_pipe("sentencizer")
-    return nlp
+    return new_chunks
 
 
 def Generate_Questions_inferenace(model, tokenizer, chunk_texts):
@@ -147,12 +124,14 @@ def Generate_Questions_inferenace(model, tokenizer, chunk_texts):
     
     return results
 
-def question_generation_query(model,llm, tokenizer, nlp, transcript:str,types:list):
+def question_generation_query(model,llm, tokenizer, transcript:str, types:list, chunk_size:int, chunk_overlap:int):
     context = clean_transcript(transcript,llm)
     
     prob_distribution = adjust_prob_distribution(types)
 
-    chunk_texts = split_transcrpit(context, prob_distribution, nlp)  
+    print("Prob"," ", prob_distribution)
+
+    chunk_texts = split_transcrpit(context, prob_distribution, chunk_size, chunk_overlap)  
 
     output = Generate_Questions_inferenace(model, tokenizer, chunk_texts)
   

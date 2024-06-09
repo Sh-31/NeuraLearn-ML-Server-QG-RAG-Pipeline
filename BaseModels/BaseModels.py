@@ -13,7 +13,9 @@ class AudioIn(BaseModel):
 class QuestionGenIN(BaseModel):
     transcript: str    
     types: list[int]
-    scope: Optional[int] = None 
+    chunk_size: Optional[int] = 2000
+    chunk_overlap: Optional[int] = 1000
+
 
 class HumanIn(BaseModel):
     question: str
