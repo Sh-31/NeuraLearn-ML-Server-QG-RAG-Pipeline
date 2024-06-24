@@ -2,11 +2,11 @@ import uvicorn
 import torch
 import os
 from fastapi import FastAPI , Request , Depends
-from BaseModels.BaseModels import SummarizerIn  ,AudioIn, HumanIn, QuestionGenIN
+from BaseModels.BaseModels import SummarizerIn  ,AudioIn, HumanIn, QuestionGenIN , CompareAnswers
 from summarizer_utils import summarizer_query
 from model_utils import Chatbot , Llm_EndPoint
 from document_prompts_utils import embedding_model
-from question_generation_utils import load_generation_generation_model , question_generation_query
+from question_generation_utils import load_generation_generation_model , question_generation_query , CompareAnswersInovke
 from transcript_utils import query
 
 app = FastAPI()
@@ -43,6 +43,9 @@ def question_answer(HumanIn:HumanIn):
 def summarizer(SummarizerIn:SummarizerIn):
     return summarizer_query(context=SummarizerIn.text, max_length=SummarizerIn.max_length, min_length=SummarizerIn.min_length)
 
+@app.post("/neuarlearn/ml/CompareAnswers")
+def compare_answers(CompareAnswers:CompareAnswers):
+    return CompareAnswersInovke(correct_answer=CompareAnswers.correct_answer, question=CompareAnswers.question, student_answer=CompareAnswers.student_answer, llm=llm)
 
 @app.post("/neuarlearn/ml/QuestionGeneration")
 def question_generation(QuestionGenIN:QuestionGenIN):

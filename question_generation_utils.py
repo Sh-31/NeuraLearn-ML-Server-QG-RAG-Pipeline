@@ -36,6 +36,32 @@ def clean_transcript(transcript:str,llm):
     return context
 
 
+def CompareAnswersInovke(question:str,correct_answer:str,student_answer:str,  llm):
+    instruction= f"""
+                    
+                    Please provide the following:
+                    1. Speek as teacher
+                    2. Feedback on the student's answer.
+                    3. A brief explanation for the score.
+
+                    Example:
+                    Question: What is the capital of France?
+                    Correct Answer: The capital of France is Paris. It is known for its culture and history.
+                    Student Answer: Paris is the capital city of France, famous for its historical landmarks and rich culture.
+
+                    Feedback: The student's answer correctly identifies Paris as the capital of France and highlights its cultural and historical significance. The phrasing differs slightly, but the content and meaning are almost identical.
+                    Explanation: Both answers identify Paris as the capital of France and highlight its cultural and historical significance. The slight difference in phrasing does not affect the overall accuracy and completeness of the response.
+
+                    Question: {question}
+                    Correct Answer: {correct_answer}
+                    Student Answer: {student_answer}
+
+                    """
+
+    context = llm.invoke(instruction,temperature=1, max_new_tokens=2000)
+    return {"feedback":context}    
+
+
 def adjust_prob_distribution(types_to_include:list):
     '''
     This probability distribution of question is matching the our collected data

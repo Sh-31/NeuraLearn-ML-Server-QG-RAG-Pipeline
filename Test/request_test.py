@@ -19,6 +19,17 @@ payload = {
 
 }
 
+payload_compare_answers = {
+    "question":"Explain the process of photosynthesis.",
+    "correct_answer": "Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize foods with the help of chlorophyll. It involves the intake of carbon dioxide and water, which are converted into glucose and oxygen through the energy provided by sunlight.",
+    "student_answer": "Photosynthesis is how plants make their food using sunlight. They take in carbon dioxide and water, and produce glucose and oxygen."
+}
+
+
+# TEST Compare Answers   
+response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/CompareAnswers", json=payload_compare_answers)
+print(response.json())
+
 # TEST Question Generation                                                                    
 # response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/QuestionGeneration", json={"transcript":context,"types":[2],"chunk_size":3000,'chunk_overlap':500})
 # print(response.json())

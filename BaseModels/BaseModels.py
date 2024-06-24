@@ -32,3 +32,8 @@ class LlmOut(BaseModel):
     answer: str
     chat_history: Optional[list[str]]
     
+
+class CompareAnswers(BaseModel):
+    student_answer: str
+    correct_answer: str
+    question: str
