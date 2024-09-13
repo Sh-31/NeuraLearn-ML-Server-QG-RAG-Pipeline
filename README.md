@@ -202,7 +202,7 @@ Generate questions based on the provided transcript.
     }
   }
 ```
-- You can test the script by navigating to `Test/request_test.py`. Simply uncomment any satisfied endpoint as shown below to execute the corresponding test:
+- You can utilize the test script by navigating to `Test/request_test.py`. Simply uncomment any satisfied endpoint as shown below to execute the corresponding test:
 
 ![Test Script Example](https://github.com/user-attachments/assets/0c35a313-f3b1-4301-9037-79582e9f1eaf)
 
