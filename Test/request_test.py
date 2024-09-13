@@ -27,16 +27,16 @@ payload_compare_answers = {
 
 
 # TEST Compare Answers   
-response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/CompareAnswers", json=payload_compare_answers)
-print(response.json())
+# response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/CompareAnswers", json=payload_compare_answers)
+# print(response.json())
 
 # TEST Question Generation                                                                    
-# response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/QuestionGeneration", json={"transcript":context,"types":[2],"chunk_size":3000,'chunk_overlap':500})
+# response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/QuestionGeneration", json={"transcript":context,"types":[1,2,3],"chunk_size":1800,'chunk_overlap':500})
 # print(response.json())
 
 # TEST CHATBOT 
-# response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/chat", json=payload)
-# print(response.json())
+response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/chat", json=payload)
+print(response.json())
 
 # TEST Summaizer
 # response = requests.post(url="http://127.0.0.1:8080/neuarlearn/ml/summaizer", json={"text":context, "min_length": 50, "max_length": 250})

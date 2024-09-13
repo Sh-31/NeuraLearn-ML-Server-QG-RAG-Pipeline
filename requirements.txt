@@ -8,6 +8,10 @@ peft==0.11.1
 pydantic==2.7.3
 python-dotenv==1.0.1
 Requests==2.32.3
-torch==2.3.0
+torch==2.2.1
 transformers==4.39.3
 uvicorn==0.30.1
+sentence-transformers
+bitsandbytes
+spacy
+chromadb
